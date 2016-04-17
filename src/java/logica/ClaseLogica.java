@@ -5,7 +5,9 @@
  */
 package logica;
 
+import java.util.List;
 import javax.ejb.Stateless;
+import modelo.Clase;
 
 /**
  *
@@ -13,6 +15,31 @@ import javax.ejb.Stateless;
  */
 @Stateless
 public class ClaseLogica implements ClaseLogicaLocal {
+
+    @Override
+    public void registrarClase(Clase clase) throws Exception {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void modificarClase(Clase clase) throws Exception {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void eliminarClase(Clase clase) throws Exception {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public Clase consultarxDocumento(Integer documento) throws Exception {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<Clase> consultarTodos() throws Exception {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 
     // Add business logic below. (Right-click in editor and choose
     // "Insert Code > Add Business Method")

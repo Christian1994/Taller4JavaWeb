@@ -5,7 +5,9 @@
  */
 package logica;
 
+import java.util.List;
 import javax.ejb.Local;
+import modelo.Clase;
 
 /**
  *
@@ -13,5 +15,9 @@ import javax.ejb.Local;
  */
 @Local
 public interface ClaseLogicaLocal {
-    
+    public void registrarClase(Clase clase) throws Exception;
+    public void modificarClase(Clase clase) throws Exception;
+    public void eliminarClase(Clase clase) throws Exception;
+    public Clase consultarxDocumento (Integer documento) throws Exception;
+    public List<Clase> consultarTodos() throws Exception;     
 }
