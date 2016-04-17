@@ -32,12 +32,12 @@ public class ClaseLogica implements ClaseLogicaLocal {
     }
 
     @Override
-    public Clase consultarxDocumento(Integer documento) throws Exception {
+    public Clase consultarxCodigo(Integer codigo) throws Exception {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public List<Clase> consultarTodos() throws Exception {
+    public List<Clase> consultarTodas() throws Exception {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

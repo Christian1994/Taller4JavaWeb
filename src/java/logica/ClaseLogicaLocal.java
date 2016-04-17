@@ -18,6 +18,6 @@ public interface ClaseLogicaLocal {
     public void registrarClase(Clase clase) throws Exception;
     public void modificarClase(Clase clase) throws Exception;
     public void eliminarClase(Clase clase) throws Exception;
-    public Clase consultarxDocumento (Integer documento) throws Exception;
-    public List<Clase> consultarTodos() throws Exception;     
+    public Clase consultarxCodigo (Integer codigo) throws Exception;
+    public List<Clase> consultarTodas() throws Exception;     
 }
