@@ -18,7 +18,7 @@
             <p:layout fullPage="true">
 
                 <p:layoutUnit position="north" size="100" resizable="true" closable="true" collapsible="true">
-                    CRUD Docente
+                    CRUD Clase
                 </p:layoutUnit>
 
                 <p:layoutUnit position="south" size="100" closable="true" collapsible="true">
@@ -29,13 +29,6 @@
                 <p:layoutUnit position="west" size="250" header="Left" collapsible="true">
                     <h:form>
                         <p:menu>
-                            <p:submenu label="Univalle Demo">
-                                <p:menuitem value="Gestión Carreras" url="/faces/docente/gestionCarreras.xhtml" />
-                                <p:menuitem value="Gestión Estudiantes" url="/faces/estudiante/gestionEstudiantes.xhtml"/>
-                                <p:menuitem value="Gestión Materias" url="/faces/docente/gestionMaterias.xhtml"/>
-                                <p:menuitem value="Gestión Matrículas" url="/faces/estudiante/gestionMatriculas.xhtml"/>
-                            </p:submenu>
-
                             <p:submenu label="Resources">
                                 <p:menuitem value="Demo" url="http://www.primefaces.org/showcase-labs/ui/home.jsf" />
                                 <p:menuitem value="Documentation" url="http://www.primefaces.org/documentation.html" />
@@ -51,7 +44,7 @@
                         <p:growl id="msgs" showDetail="true" />
                         <p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
                         
-                        <!--CRUD docente-->
+                        <!--CRUD Clase-->
                         <p:panelGrid columns="4">
                             <h:outputText value="Documento"/>
                             <p:inputText id="txtNumero" binding="#{docenteVista.txtDocumento}"/>

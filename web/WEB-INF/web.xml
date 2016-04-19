@@ -5,6 +5,14 @@
         <param-value>Development</param-value>
     </context-param>
     <filter>
+        <filter-name>IndexFiltro</filter-name>
+        <filter-class>filtro.IndexFiltro</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>IndexFiltro</filter-name>
+        <url-pattern>/faces/index.xhtml</url-pattern>
+    </filter-mapping>
+    <filter>
         <filter-name>SalaFiltro</filter-name>
         <filter-class>filtro.SalaFiltro</filter-class>
     </filter>
