@@ -5,12 +5,15 @@
  */
 package vista;
 
+import java.sql.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import logica.ClaseLogicaLocal;
 import modelo.Clase;
 import org.primefaces.component.commandbutton.CommandButton;
@@ -170,6 +173,87 @@ public class ClaseVista {
         this.btnModificar.setDisabled(false);
         this.btnEliminar.setDisabled(false);
         this.txtNumero.setDisabled(true);
+    }
+
+    // Limpia los campos y reinicia los valores
+    public void limpiar(){
+        this.txtNumero.setValue("");
+        this.txtFecha.setValue("");
+        this.txtAsignatura.setValue("");
+        this.txtTema.setValue("");
+        this.txtHoraInicio.setValue("");
+        this.txtHoraFin.setValue("");
+        this.txtProfesor.setValue("");
+        this.txtNumero.setDisabled(false);
+        this.btnRegistrar.setDisabled(false);
+        this.btnModificar.setDisabled(true);
+        this.btnEliminar.setDisabled(true);
+    }
+
+    // Método registrar
+    public void action_registrar(){
+        try {
+            Clase objClase = new Clase();
+            objClase.setNumero(Integer.parseInt(this.txtNumero.getValue().toString()));
+            objClase.setFecha(Date.valueOf(this.txtFecha.getValue().toString()));
+            objClase.setAsignatura(this.txtAsignatura.getValue().toString());
+            objClase.setTema(this.txtTema.getValue().toString());
+            objClase.setHorainicio(Date.valueOf(this.txtHoraInicio.getValue().toString()));
+            objClase.setHorafin(Date.valueOf(this.txtHoraFin.getValue().toString()));
+            objClase.setProfesor(this.txtProfesor.getValue().toString());
+            
+            claseLogica.registrarClase(objClase);
+            listaClases = null;
+            limpiar();
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Información de creación de clase", "La clase fue registrada con éxito."));
+            
+        } catch (Exception ex) {
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error.", ex.getMessage()));
+        }
+    }
+
+    // Método modificar
+    public void action_modificar(){
+        try {
+            Clase objClase = new Clase();
+            objClase.setNumero(Integer.parseInt(this.txtNumero.getValue().toString()));
+            objClase.setFecha(Date.valueOf(this.txtFecha.getValue().toString()));
+            objClase.setAsignatura(this.txtAsignatura.getValue().toString());
+            objClase.setTema(this.txtTema.getValue().toString());
+            objClase.setHorainicio(Date.valueOf(this.txtHoraInicio.getValue().toString()));
+            objClase.setHorafin(Date.valueOf(this.txtHoraFin.getValue().toString()));
+            objClase.setProfesor(this.txtProfesor.getValue().toString());
+            
+            claseLogica.modificarClase(objClase);
+            listaClases = null;
+            limpiar();
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Información de modificación de clase", "La clase fue modificada con éxito."));
+            
+        } catch (Exception ex) {
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error.", ex.getMessage()));
+        }
+    }    
+ 
+    // Método eliminar
+    public void action_eliminar(){
+        try {
+            Clase objClase = new Clase();
+            objClase.setNumero(Integer.parseInt(this.txtNumero.getValue().toString()));
+            objClase.setFecha(Date.valueOf(this.txtFecha.getValue().toString()));
+            objClase.setAsignatura(this.txtAsignatura.getValue().toString());
+            objClase.setTema(this.txtTema.getValue().toString());
+            objClase.setHorainicio(Date.valueOf(this.txtHoraInicio.getValue().toString()));
+            objClase.setHorafin(Date.valueOf(this.txtHoraFin.getValue().toString()));
+            objClase.setProfesor(this.txtProfesor.getValue().toString());
+            
+            claseLogica.eliminarClase(objClase);
+            listaClases = null;
+            limpiar();
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Información de eliminación de clase", "La clase fue eliminada con éxito."));
+            
+        } catch (Exception ex) {
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error.", ex.getMessage()));
+        }
     }
     
     /**
