@@ -1,0 +1,127 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <f:view contentType="text/html">
+        <h:head>
+            <f:facet name="first">
+                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+                <title>PrimeFaces</title>
+            </f:facet>
+        </h:head>
+
+        <h:body>
+
+            <p:layout fullPage="true">
+
+                <p:layoutUnit position="north" size="100" resizable="true" closable="true" collapsible="true">
+                    CRUD Docente
+                </p:layoutUnit>
+
+                <p:layoutUnit position="south" size="100" closable="true" collapsible="true">
+                    <p>Christian David Noreña Valencia</p>
+                    <p>Javier Simón Naranjo Herrera</p>
+                </p:layoutUnit>
+
+                <p:layoutUnit position="west" size="250" header="Left" collapsible="true">
+                    <h:form>
+                        <p:menu>
+                            <p:submenu label="Univalle Demo">
+                                <p:menuitem value="Gestión Carreras" url="/faces/docente/gestionCarreras.xhtml" />
+                                <p:menuitem value="Gestión Estudiantes" url="/faces/estudiante/gestionEstudiantes.xhtml"/>
+                                <p:menuitem value="Gestión Materias" url="/faces/docente/gestionMaterias.xhtml"/>
+                                <p:menuitem value="Gestión Matrículas" url="/faces/estudiante/gestionMatriculas.xhtml"/>
+                            </p:submenu>
+
+                            <p:submenu label="Resources">
+                                <p:menuitem value="Demo" url="http://www.primefaces.org/showcase-labs/ui/home.jsf" />
+                                <p:menuitem value="Documentation" url="http://www.primefaces.org/documentation.html" />
+                                <p:menuitem value="Forum" url="http://forum.primefaces.org/" />
+                                <p:menuitem value="Themes" url="http://www.primefaces.org/themes.html" />
+                            </p:submenu>
+                        </p:menu>
+                    </h:form>
+                </p:layoutUnit>
+
+                <p:layoutUnit position="center">
+                    <h:form id="form">
+                        <p:growl id="msgs" showDetail="true" />
+                        <p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
+                        
+                        <!--CRUD docente-->
+                        <p:panelGrid columns="4">
+                            <h:outputText value="Documento"/>
+                            <p:inputText id="txtNumero" binding="#{docenteVista.txtDocumento}"/>
+
+                            <h:outputText value="Nombre"/>
+                            <p:inputText id="txtNombre" binding="#{docenteVista.txtNombre}"/>
+                   
+                            <h:outputText value="Apellido"/>
+                            <p:inputText id="txtApellido" binding="#{docenteVista.txtApellido}"/>
+
+                            <h:outputText value="E-mail"/>
+                            <p:inputText id="txtCorreo" binding="#{docenteVista.txtCorreo}"/>
+                            
+                            <h:outputText value="Teléfono"/>
+                            <p:inputText id="txtTelefono" binding="#{docenteVista.txtTelefono}"/>
+                            
+                            <h:outputText value="Profesión"/>
+                            <p:inputText id="txtProfesion" binding="#{docenteVista.txtProfesion}"/>
+                            
+                            <h:outputText value="Clave"/>
+                            <p:password id="txtClave" value="#{docenteVista.txtClave}" feedback="true"/>
+                        </p:panelGrid>
+                        
+                        <p:panelGrid columns="4">
+                            <p:commandButton value="Registrar" binding="#{docenteVista.btnRegistrar}" action="#{docenteVista.action_registrar()}" update=":form"/> 
+                            <p:commandButton value="Modificar" binding="#{docenteVista.btnModificar}" action="#{docenteVista.action_modificar()}" update=":form"/>
+                            <p:commandButton value="Eliminar" binding="#{docenteVista.btnEliminar}" action="#{docenteVista.action_eliminar()}" update=":form"/>
+                            <p:commandButton value="Limpiar" binding="#{docenteVista.btnLimpiar}" action="#{docenteVista.limpiar()}" update=":form"/>
+                            
+                            <p:commandButton value="Cerrar Sesión" binding="#{sesionVista.btnCerrar}" action="#{sesionVista.cerrarSesion_action()}"/> 
+                        </p:panelGrid>
+                        
+                        <p:dataTable id="eventsDT" var="docente" value="#{docenteVista.listaDocentes}" selectionMode="single" selection="#{docenteVista.selectedDocente}" rowKey="#{docente.documentodocente}">
+                            <f:facet name="header">
+                                Docentes
+                            </f:facet>
+                            <p:ajax event="rowSelect" listener="#{docenteVista.onRowSelect}" update=":form" />
+                            <p:column headerText="Documento">
+                                <h:outputText value="#{docente.documentodocente}" />
+                            </p:column>
+                            <p:column headerText="Nombre">
+                                <h:outputText value="#{docente.nombredocente}" />
+                            </p:column>
+                            <p:column headerText="Apellido">
+                                <h:outputText value="#{docente.apellidodocente}" />
+                            </p:column>
+                            <p:column headerText="E-mail">
+                                <h:outputText value="#{docente.correodocente}" />
+                            </p:column>
+                            <p:column headerText="Teléfono">
+                                <h:outputText value="#{docente.telefonodocente}" />
+                            </p:column>
+                            <p:column headerText="Profesión">
+                                <h:outputText value="#{docente.profesiondocente}" />
+                            </p:column>
+                            <!--
+                            <p:column headerText="Clave">
+                                <h:outputText value="#{docente.clavedocente}" />
+                            </p:column>
+                            -->
+                        </p:dataTable>
+                    </h:form>                    
+                </p:layoutUnit>
+
+            </p:layout>
+
+        </h:body>
+
+    </f:view>
+</html>
+
+
+

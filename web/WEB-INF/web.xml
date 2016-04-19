@@ -4,6 +4,22 @@
         <param-name>javax.faces.PROJECT_STAGE</param-name>
         <param-value>Development</param-value>
     </context-param>
+    <filter>
+        <filter-name>SalaFiltro</filter-name>
+        <filter-class>filtro.SalaFiltro</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>SalaFiltro</filter-name>
+        <url-pattern>/faces/sala/*</url-pattern>
+    </filter-mapping>
+    <filter>
+        <filter-name>SecretariaFiltro</filter-name>
+        <filter-class>filtro.SecretariaFiltro</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>SecretariaFiltro</filter-name>
+        <url-pattern>/faces/secretaria/*</url-pattern>
+    </filter-mapping>
     <servlet>
         <servlet-name>Faces Servlet</servlet-name>
         <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
