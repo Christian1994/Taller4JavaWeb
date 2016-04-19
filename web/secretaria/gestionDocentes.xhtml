@@ -29,13 +29,6 @@
                 <p:layoutUnit position="west" size="250" header="Left" collapsible="true">
                     <h:form>
                         <p:menu>
-                            <p:submenu label="Univalle Demo">
-                                <p:menuitem value="Gestión Carreras" url="/faces/docente/gestionCarreras.xhtml" />
-                                <p:menuitem value="Gestión Estudiantes" url="/faces/estudiante/gestionEstudiantes.xhtml"/>
-                                <p:menuitem value="Gestión Materias" url="/faces/docente/gestionMaterias.xhtml"/>
-                                <p:menuitem value="Gestión Matrículas" url="/faces/estudiante/gestionMatriculas.xhtml"/>
-                            </p:submenu>
-
                             <p:submenu label="Resources">
                                 <p:menuitem value="Demo" url="http://www.primefaces.org/showcase-labs/ui/home.jsf" />
                                 <p:menuitem value="Documentation" url="http://www.primefaces.org/documentation.html" />
@@ -51,28 +44,22 @@
                         <p:growl id="msgs" showDetail="true" />
                         <p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
                         
-                        <!--CRUD docente-->
+                        <!--CRUD Clase-->
                         <p:panelGrid columns="4">
                             <h:outputText value="Documento"/>
-                            <p:inputText id="txtNumero" binding="#{docenteVista.txtDocumento}"/>
+                            <p:inputText id="txtDocumento" binding="#{docenteVista.txtDocumento}"/>
 
                             <h:outputText value="Nombre"/>
-                            <p:inputText id="txtNombre" binding="#{docenteVista.txtNombre}"/>
+                            <p:inputText id="txtNombre" binding="#{docenteeVista.txtNombre}"/>
                    
                             <h:outputText value="Apellido"/>
                             <p:inputText id="txtApellido" binding="#{docenteVista.txtApellido}"/>
 
-                            <h:outputText value="E-mail"/>
+                            <h:outputText value="Correo"/>
                             <p:inputText id="txtCorreo" binding="#{docenteVista.txtCorreo}"/>
                             
                             <h:outputText value="Teléfono"/>
                             <p:inputText id="txtTelefono" binding="#{docenteVista.txtTelefono}"/>
-                            
-                            <h:outputText value="Profesión"/>
-                            <p:inputText id="txtProfesion" binding="#{docenteVista.txtProfesion}"/>
-                            
-                            <h:outputText value="Clave"/>
-                            <p:password id="txtClave" value="#{docenteVista.txtClave}" feedback="true"/>
                         </p:panelGrid>
                         
                         <p:panelGrid columns="4">
@@ -84,34 +71,26 @@
                             <p:commandButton value="Cerrar Sesión" binding="#{sesionVista.btnCerrar}" action="#{sesionVista.cerrarSesion_action()}"/> 
                         </p:panelGrid>
                         
-                        <p:dataTable id="eventsDT" var="docente" value="#{docenteVista.listaDocentes}" selectionMode="single" selection="#{docenteVista.selectedDocente}" rowKey="#{docente.documentodocente}">
+                        <p:dataTable id="eventsDT" var="docente" value="#{docenteVista.listaClases}" selectionMode="single" selection="#{docenteVista.selectedClase}" rowKey="#{docente.documento}">
                             <f:facet name="header">
                                 Docentes
                             </f:facet>
                             <p:ajax event="rowSelect" listener="#{docenteVista.onRowSelect}" update=":form" />
                             <p:column headerText="Documento">
-                                <h:outputText value="#{docente.documentodocente}" />
+                                <h:outputText value="#{docente.documento}" />
                             </p:column>
                             <p:column headerText="Nombre">
-                                <h:outputText value="#{docente.nombredocente}" />
+                                <h:outputText value="#{docente.nombre}" />
                             </p:column>
                             <p:column headerText="Apellido">
-                                <h:outputText value="#{docente.apellidodocente}" />
+                                <h:outputText value="#{docente.apellido}" />
                             </p:column>
-                            <p:column headerText="E-mail">
-                                <h:outputText value="#{docente.correodocente}" />
+                            <p:column headerText="Correo">
+                                <h:outputText value="#{docente.correo}" />
                             </p:column>
                             <p:column headerText="Teléfono">
-                                <h:outputText value="#{docente.telefonodocente}" />
+                                <h:outputText value="#{docente.telefono}" />
                             </p:column>
-                            <p:column headerText="Profesión">
-                                <h:outputText value="#{docente.profesiondocente}" />
-                            </p:column>
-                            <!--
-                            <p:column headerText="Clave">
-                                <h:outputText value="#{docente.clavedocente}" />
-                            </p:column>
-                            -->
                         </p:dataTable>
                     </h:form>                    
                 </p:layoutUnit>
@@ -122,6 +101,3 @@
 
     </f:view>
 </html>
-
-
-
