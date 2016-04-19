@@ -14,5 +14,5 @@ import modelo.Usuario;
  */
 @Local
 public interface SesionLogicaLocal {
-    public Usuario iniciarSesion(Long documento, String clave) throws Exception;
+    public Usuario iniciarSesion(Integer documento, String clave) throws Exception;
 }

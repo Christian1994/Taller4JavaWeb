@@ -21,7 +21,7 @@ public class SesionLogica implements SesionLogicaLocal {
     private UsuarioFacadeLocal usuarioDAO;
     
     @Override
-    public Usuario iniciarSesion(Long documento, String clave) throws Exception {
+    public Usuario iniciarSesion(Integer documento, String clave) throws Exception {
         if(documento == null || clave == null || clave.equals("")){
             throw new Exception("Los datos de ingreso son Obligatorios.");
         }
